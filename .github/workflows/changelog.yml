@@ -41,8 +41,8 @@ jobs:
            pip install jinja-cli
       - name: Send ChangeLog N o t i f i c a t i o n s
         env:
-          SECURITY: $ {{ secrets.TEAMS_WH_SECURITY }}
-          SUPPORT: $ {{ secrets.TEAMS_WH_SUPPORT }}
+          SECURITY: ${{ secrets.TEAMS_WH_SECURITY }}
+          SUPPORT: ${{ secrets.TEAMS_WH_SUPPORT }}
         run: |
          TEMPLATE_PATH="changelog/.template/default.j2"
          HEADERS='Content-type: application/json'

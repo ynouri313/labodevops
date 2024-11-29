@@ -10,6 +10,6 @@
     " start ": " Mercredi 30 Novembre 8:00 ",
     " end": " Mercredi 30 Novembre 12:00 "
     } ,
-    " recommendations ": " Monitorer l’ tat des services , rollback si besoin ... ",
+    " recommendations ": " Monitorer l' tat des services , rollback si besoin ... ",
     " notify ": [" SECURITY "]
-    }
+}
