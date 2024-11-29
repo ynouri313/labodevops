@@ -46,7 +46,7 @@ jobs:
         run: |
          TEMPLATE_PATH="changelog/.template/default.j2"
          HEADERS='Content-type: application/json'
-         FILTERED=$ {{ needs.get_changelogs.outputs.added } }
+         FILTERED=${{ needs.get_changelogs.outputs.added }}
          echo "Detected changelog update: $FILTERED"
          for FILE in $FILTERED ; do
           echo "Processing changelog: $FILE"
