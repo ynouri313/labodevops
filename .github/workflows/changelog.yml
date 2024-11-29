@@ -5,10 +5,10 @@ on:
 name: changelog
 jobs:
  get_changelogs: # identifiant de la job
-   name: Get Added Changelog F i l e s
+   name: Get Added Changelog Files
    runs-on: ubuntu-latest
    outputs: # outputs u t i l i s par les job suivantes
-       added_changelogs: $ { { step s . d iff _ c h a n g e l o g s . o ut p ut s .added_changelogs } }
+       added_changelogs: ${{ steps.diff_changelogs.outputs.added_changelogs }}
    steps:
      - uses: actions/checkout@v2
        with:
@@ -18,7 +18,7 @@ jobs:
      - id: diff_changelogs
        if : ${{ steps.files.outputs.added }}
        run: |
-          ADDED=$ ( echo $ { { steps . f i l e s . outputs . added } } )
+          ADDED=$ ( echo $ { { steps.files.outputs.added } } )
           FORMATED=$ ( echo $ADDED | t r '' '' '\n' )
           REGX='^( changelog)/(\w+\. json)$''
           FILTERED=$ ( echo $FORMATED | grep -E $REGX)
@@ -41,8 +41,8 @@ jobs:
            pip install jinja-cli
       - name: Send ChangeLog N o t i f i c a t i o n s
         env:
-          SECURITY: $ {{ secrets.TEAMS_WH_SECURITY } }
-          SUPPORT: $ {{ secrets.TEAMS_WH_SUPPORT } }
+          SECURITY: $ {{ secrets.TEAMS_WH_SECURITY }}
+          SUPPORT: $ {{ secrets.TEAMS_WH_SUPPORT }}
         run: |
          TEMPLATE_PATH="changelog/.template/default.j2"
          HEADERS='Content-type: application/json'
@@ -50,7 +50,7 @@ jobs:
          echo "Detected changelog update: $FILTERED"
          for FILE in $FILTERED ; do
           echo "Processing changelog: $FILE"
-          CHANNELS=$ ( jq −r ’.notify[]’ $FILE )
+          CHANNELS=$ ( jq -r '.notify[]' $FILE )
           echo "Found channels: $CHANNELS"
           for CHANNEL in $CHANNELS; do
               echo "Sending notification to $CHANNEL"
