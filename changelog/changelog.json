@@ -1,0 +1,15 @@
+{
+    " title ": " Titre de la notification ",
+    " description ": " Mise jour de la version 1.0.0 la version 1.0.1e ABC ... ",
+    " environments ": ["dev ", " staging "] ,
+    " impact ": [" service1 ", " auth "] ,
+    " contacts ": [
+    " Yassine NOURI ( yassine@yno.com )"
+    ] ,
+    " schedule ": {
+    " start ": " Mercredi 30 Novembre 8:00 ",
+    " end": " Mercredi 30 Novembre 12:00 "
+    } ,
+    " recommendations ": " Monitorer l’ tat des services , rollback si besoin ... ",
+    " notify ": [" SECURITY "]
+    }
