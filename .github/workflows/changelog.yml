@@ -18,7 +18,7 @@ jobs:
      - id: diff_changelogs
        if : ${{ steps.files.outputs.added }}
        run: |
-          ADDED=$ ( echo $ { { steps.files.outputs.added } } )
+          ADDED=$ ( echo ${{ steps.files.outputs.added }} )
           FORMATED=$ ( echo $ADDED | t r '' '' '\n' )
           REGX='^( changelog)/(\w+\. json)$''
           FILTERED=$ ( echo $FORMATED | grep -E $REGX)
